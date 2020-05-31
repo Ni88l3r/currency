@@ -8,6 +8,7 @@ urlpatterns = [
     re_path(r'^silk/', include('silk.urls', namespace='silk')),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('account/', include('account.urls')),
+    path('rate/', include('rate.urls')),
 ]
 
 if settings.DEBUG:
