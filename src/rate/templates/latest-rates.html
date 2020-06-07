@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Currency - Latest Rates list{% endblock title %}
+
+{% block content %}
+
+{% if object_list %}
+    <table class="table table-bordered table-hover table-sm text-center table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Created</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Source</th>
+                <th scope="col">Currency Type</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rate in object_list %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ rate.id }}</td>
+                <td>{{ rate.created }}</td>
+                <td>{{ rate.amount }}</td>
+                <td>{{ rate.get_source_display }}</td>
+                <td>{{ rate.get_currency_type_display }}</td>
+                <td>{{ rate.get_type_display }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    Latest Rates list is empty.
+{% endif %}
+
+{% endblock content %}

@@ -1,24 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rates list</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-{% if rates %}
-    <table bordercolor="black" border="1" cellpadding="3" cellspacing="0">
-        <caption><b>Rates list:</b></caption>
+{% block title %}Currency - Rates list{% endblock title %}
+
+{% block content %}
+
+<a class="btn btn-outline-secondary btn-sm m-1" href="{% url 'rate:download-csv' %}" role="button">Download .CSV</a>
+<a class="btn btn-outline-secondary btn-sm m-1" href="{% url 'rate:download-xlsx' %}" role="button">Download .XLSX</a>
+
+{% if object_list %}
+    <table class="table table-bordered table-hover table-sm text-center table-striped">
+        <thead class="thead-light">
             <tr>
-                <th>ID</th>
-                <th>Created</th>
-                <th>Amount</th>
-                <th>Source</th>
-                <th>Currency Type</th>
-                <th>Type</th>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">Created</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Source</th>
+                <th scope="col">Currency Type</th>
+                <th scope="col">Type</th>
             </tr>
-    {% for rate in rates %}
+        </thead>
+        <tbody>
+        {% for rate in object_list %}
             <tr>
+                <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ rate.id }}</td>
                 <td>{{ rate.created }}</td>
                 <td>{{ rate.amount }}</td>
@@ -26,11 +31,11 @@
                 <td>{{ rate.get_currency_type_display }}</td>
                 <td>{{ rate.get_type_display }}</td>
             </tr>
-    {% endfor %}
+        {% endfor %}
+        </tbody>
     </table>
 {% else %}
     Rates list is empty.
 {% endif %}
 
-</body>
-</html>
+{% endblock content %}
