@@ -1,8 +1,9 @@
 import hashlib
+
 from django.core.cache import cache
 
-from rate.models import Rate
 from rate import model_choices as mch
+from rate.models import Rate
 
 
 def rate_cache_key(source, type_, currency) -> str:
