@@ -6,5 +6,8 @@ from rate import views
 app_name = "rate"
 
 urlpatterns = [
-    path('show/', views.show, name='show'),
+    path('list/',  views.RateList.as_view(), name='list'),
+    path('latest/',  views.LatestRateList.as_view(), name='latest'),
+    path('download-csv/',  views.RateDownloadCSV.as_view(), name='download-csv'),
+    path('download-xlsx/',  views.RateDownloadXLSX.as_view(), name='download-xlsx'),
 ]
