@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Currency - Rate Edit {% endblock title %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="text-center row justify-content-center align-middle">
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <input type="submit" value="Confirm">
+    </div>
+</form>
+
+{% endblock content %}

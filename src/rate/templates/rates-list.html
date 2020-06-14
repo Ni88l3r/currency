@@ -18,6 +18,10 @@
                 <th scope="col">Source</th>
                 <th scope="col">Currency Type</th>
                 <th scope="col">Type</th>
+                {% if request.user.is_superuser %}
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -30,6 +34,10 @@
                 <td>{{ rate.get_source_display }}</td>
                 <td>{{ rate.get_currency_type_display }}</td>
                 <td>{{ rate.get_type_display }}</td>
+                {% if request.user.is_superuser %}
+                <td><a class="btn btn-outline-secondary btn-sm m-1" href="{% url 'rate:edit' pk=rate.id %}"  role="button">Edit</a></td>
+                <td><a class="btn btn-outline-secondary btn-sm m-1" href="{% url 'rate:delete' pk=rate.id %}" role="button">Delete</a></td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>

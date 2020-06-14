@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Currency - Login {% endblock title %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="text-center row justify-content-center align-middle">
+        {{ form.username|as_crispy_field }}
+    </div>
+    <div class="text-center row justify-content-center align-middle">
+        {{ form.password|as_crispy_field }}
+    </div>
+    <div class="text-center row justify-content-center align-middle">
+        <button class="btn btn-outline-secondary btn-sm m-1" type="submit">Login</button>
+    </div>
+</form>
+
+{% endblock content %}

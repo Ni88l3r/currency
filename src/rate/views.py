@@ -1,7 +1,9 @@
 import csv
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse
-from django.views.generic import ListView, TemplateView, View
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView, ListView, TemplateView, UpdateView, View
 
 from rate.models import Rate
 from rate.selectors import get_latest_rates
@@ -82,3 +84,25 @@ class RateDownloadXLSX(View):
                 worksheet.write(col, row, value)
         workbook.close()
         return response
+
+
+class RateEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'rate-edit.html'
+    model = Rate
+    fields = ['created', 'amount', 'source', 'currency_type', 'type']
+    success_url = reverse_lazy('rate:list')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class RateDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    template_name = 'rate-delete.html'
+    model = Rate
+    success_url = reverse_lazy('rate:list')
+
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+
+    def test_func(self):
+        return self.request.user.is_superuser

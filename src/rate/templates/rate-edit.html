@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Currency - Rate Edit {% endblock title %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="text-center row justify-content-center align-middle">
+        {{ form.created|as_crispy_field }}
+        {{ form.amount|as_crispy_field }}
+        {{ form.source|as_crispy_field }}
+        {{ form.currency_type|as_crispy_field }}
+        {{ form.type|as_crispy_field }}
+    </div>
+    <div class="text-center row justify-content-center align-middle" >
+        <button class="btn btn-outline-secondary btn-sm m-1" type="submit">Save</button>
+    </div>
+</form>
+
+{% endblock content %}
