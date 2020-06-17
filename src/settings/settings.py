@@ -2,11 +2,13 @@ import os
 
 from celery.schedules import crontab
 
+from django.urls import reverse_lazy
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'y4w0e^)3!j7e9+n*v@htp(2of&f2075x(+vn%az$q-_y$vig*0'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -20,9 +22,12 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'silk',
+    'crispy_forms',
     'account',
     'rate',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -112,3 +117,14 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(minute='*/1'),
     }
 }
+
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
+
+EMAIL_HOST = 'smtp.ukr.net'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'koekuachu@ukr.net'
+EMAIL_HOST_PASSWORD = 'bLPw2kqp8DsIr8Ir'
+EMAIL_USE_SSL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
