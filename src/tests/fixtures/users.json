@@ -1,0 +1,22 @@
+[
+    { "model": "account.user",
+        "pk": 1,
+        "fields": {
+            "username": "admin_user",
+            "password": "pbkdf2_sha256$150000$KUn9FSgUFPet$4RIx+K079yGIDaLCTuHA3dMzmkE3YUkE8Lmh5wE7x70=",
+            "is_superuser": true,
+            "is_staff": true,
+            "is_active": true
+        }
+    },
+    { "model": "account.user",
+        "pk": 2,
+        "fields": {
+            "username": "common_user",
+            "password": "pbkdf2_sha256$150000$yxlhNJcassEo$is6L4eGbJYRaHSrvM7qqcSK+ihpZfILZ0F1zJ7OuMFI=",
+            "is_superuser": false,
+            "is_staff": false,
+            "is_active": true
+        }
+    }
+]
