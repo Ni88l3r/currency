@@ -1,0 +1,46 @@
+[
+  {
+    "model": "rate.rate",
+    "pk": 72,
+    "fields": {
+      "created": "2020-06-04T16:17:06.458Z",
+      "amount": "23.08",
+      "source": 1,
+      "currency_type": 2,
+      "type": 1
+    }
+  },
+  {
+    "model": "rate.rate",
+    "pk": 73,
+    "fields": {
+      "created": "2020-06-04T16:17:06.464Z",
+      "amount": "30.00",
+      "source": 1,
+      "currency_type": 2,
+      "type": 1
+    }
+  },
+  {
+    "model": "rate.rate",
+    "pk": 74,
+    "fields": {
+      "created": "2020-06-04T16:17:06.470Z",
+      "amount": "24.00",
+      "source": 1,
+      "currency_type": 2,
+      "type": 2
+    }
+  },
+  {
+    "model": "rate.rate",
+    "pk": 75,
+    "fields": {
+      "created": "2020-06-04T16:17:06.475Z",
+      "amount": "28.00",
+      "source": 1,
+      "currency_type": 1,
+      "type": 2
+    }
+  }
+]

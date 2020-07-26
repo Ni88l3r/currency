@@ -8,9 +8,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'y4w0e^)3!j7e9+n*v@htp(2of&f2075x(+vn%az$q-_y$vig*0'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -121,10 +121,8 @@ CELERY_BEAT_SCHEDULE = {
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
-EMAIL_HOST = 'smtp.ukr.net'
-EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'koekuachu@ukr.net'
-EMAIL_HOST_PASSWORD = 'bLPw2kqp8DsIr8Ir'
-EMAIL_USE_SSL = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+try:
+    from settings.settings_local import *  # noqa
+except ImportError:
+    print('ImportError settings_local\n')  # noqa

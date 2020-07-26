@@ -6,3 +6,4 @@ __pycache__/
 *.log
 celerybeat-schedule
 *.sqlite3
+settings_local.dev.py
