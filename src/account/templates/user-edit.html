@@ -21,5 +21,7 @@
         <button class="btn btn-outline-secondary btn-sm m-1" type="submit">Save</button>
     </div>
 </form>
-
+<div class="text-center row justify-content-center align-middle">
+    <a class="btn btn-outline-secondary btn-sm m-1" href="{% url 'account:change-password' pk=request.user.id %}">Change Password</a>
+</div>
 {% endblock content %}
