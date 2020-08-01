@@ -12,4 +12,7 @@ urlpatterns = [
     path('download-xlsx/',  views.RateDownloadXLSX.as_view(), name='download-xlsx'),
     path('edit/<int:pk>/',  views.RateEdit.as_view(), name='edit'),
     path('delete/<int:pk>/',  views.RateDelete.as_view(), name='delete'),
+
+    path('rates/', views.RateListCreateView.as_view(), name='rates'),
+    path('rate/<uuid:pk>/', views.RateReadUpdateDeleteView.as_view(), name='rate')
 ]
