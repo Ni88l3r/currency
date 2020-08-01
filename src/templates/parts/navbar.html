@@ -15,7 +15,7 @@
       <a class="nav-item {{ request.path|active:'account:my-profile' }} nav-link" href="{% url 'account:my-profile' %}">My Profile</a>
       <a class="nav-item {{ request.path|active:'account:logout' }} nav-link" href="{% url 'account:logout' %}">Logout</a>
       {% else %}
-      <a class="nav-item nav-link" href="#">Sign Up</a>
+      <a class="nav-item nav-link {{ request.path|active:'account:sign-up' }}" href="{% url 'account:sign-up' %}">Sign Up</a>
       <a class="nav-item {{ request.path|active:'account:login' }} nav-link" href="{% url 'account:login' %}">Login</a>
       {% endif %}
     </div>
