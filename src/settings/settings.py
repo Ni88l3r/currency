@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'silk',
     'crispy_forms',
+    'rest_framework',
     'account',
     'rate',
 ]
@@ -100,8 +101,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '..', 'static_content'),
+]
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static_content', 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'static_content', 'media')
 
 INTERNAL_IPS = [
     '127.0.0.1',

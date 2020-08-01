@@ -1,5 +1,6 @@
 from account.forms import ChangePasswordForm, SignUpForm
 from account.models import Contact, User
+from account.serializers import AccountSerializer
 from account.tasks import send_email_async
 from account.tokens import account_activation_token
 
@@ -10,6 +11,8 @@ from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
 from django.views.generic import CreateView, UpdateView
+
+from rest_framework import generics
 
 
 class ContactUs(CreateView):
@@ -27,8 +30,8 @@ class ContactUs(CreateView):
 class MyProfile(LoginRequiredMixin, UpdateView):
     template_name = 'user-edit.html'
     queryset = User.objects.all()
-    fields = ('email', 'first_name', 'last_name')
-    success_url = reverse_lazy('index')
+    fields = ('email', 'first_name', 'last_name', 'avatar')
+    success_url = reverse_lazy('account:my-profile')
 
     def get_object(self, queryset=None):
         obj = self.get_queryset().get(id=self.request.user.id)
@@ -80,3 +83,13 @@ class ChangePassword(LoginRequiredMixin, UpdateView):
         kwargs = super(ChangePassword, self).get_form_kwargs()
         kwargs.update({'user': self.request.user})
         return kwargs
+
+
+class UserListCreateView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = AccountSerializer
+
+
+class UserReadUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = AccountSerializer
