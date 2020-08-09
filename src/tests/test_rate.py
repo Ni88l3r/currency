@@ -74,11 +74,11 @@ def test_edit_rate_admin_empty_payload(admin_client):
     assert response.status_code == 200
     errors = response.context_data['form'].errors
     assert len(errors) == 5
-    assert errors['created'] == ['Обязательное поле.']
-    assert errors['amount'] == ['Обязательное поле.']
-    assert errors['source'] == ['Обязательное поле.']
-    assert errors['currency_type'] == ['Обязательное поле.']
-    assert errors['type'] == ['Обязательное поле.']
+    assert errors['created'] == ['Это поле обязательно.']
+    assert errors['amount'] == ['Это поле обязательно.']
+    assert errors['source'] == ['Это поле обязательно.']
+    assert errors['currency_type'] == ['Это поле обязательно.']
+    assert errors['type'] == ['Это поле обязательно.']
 
 
 def test_edit_rate_admin_incorrect_payload(admin_client):

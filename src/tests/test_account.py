@@ -18,9 +18,9 @@ def test_contact_us_empty_payload(client):
     assert response.status_code == 200
     errors = response.context_data['form'].errors
     assert len(errors) == 3
-    assert errors['email_from'] == ['Обязательное поле.']
-    assert errors['title'] == ['Обязательное поле.']
-    assert errors['message'] == ['Обязательное поле.']
+    assert errors['email_from'] == ['Это поле обязательно.']
+    assert errors['title'] == ['Это поле обязательно.']
+    assert errors['message'] == ['Это поле обязательно.']
     assert Contact.objects.count() == initial_count
     assert len(mail.outbox) == 0
 
@@ -39,7 +39,7 @@ def test_contact_us_incorrect_payload(client):
     assert response.status_code == 200
     errors = response.context_data['form'].errors
     assert len(errors) == 1
-    assert errors['email_from'] == ['Введите правильный адрес электронной почты.']
+    assert errors['email_from'] == ['Введите корректный адрес электронной почты.']
     assert Contact.objects.count() == initial_count
     assert len(mail.outbox) == 0
 
@@ -79,8 +79,8 @@ def test_login_empty_payload(client):
     response = client.post(url, {})
     errors = response.context_data['form'].errors
     assert len(errors) == 2
-    assert errors['username'] == ['Обязательное поле.']
-    assert errors['password'] == ['Обязательное поле.']
+    assert errors['username'] == ['Это поле обязательно.']
+    assert errors['password'] == ['Это поле обязательно.']
 
 
 def test_login_page_incorrect_payload(client):
