@@ -3,7 +3,7 @@ attrs==19.3.0
 autopep8==1.5.2
 billiard==3.6.3.0
 celery==4.4.2
-certifi==2020.4.5.1
+certifi==2022.12.7
 chardet==3.0.4
 Django==2.2.12
 django-crispy-forms==1.9.1
